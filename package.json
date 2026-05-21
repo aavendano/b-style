@@ -1,0 +1,64 @@
+{
+  "name": "b-style",
+  "version": "0.1.0",
+  "description": "Sistema de estilos Bulma + componentes Alpine",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:aavendano/b-style.git"
+  },
+  "bugs": "https://github.com/aavendano/b-style/issues",
+  "homepage": "https://github.com/aavendano/b-style#readme",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src/bulma",
+    "src/components",
+    "src/bulma/scripts",
+    "src/alpine-bundle.js",
+    "src/postcss.config.cjs",
+    "src/postcss.config.base.cjs",
+    "src/purge/b-safelist.json",
+    "src/purge/base-safelist.json"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./src/bulma/bulma.scss",
+      "style": "./dist/b-style.min.css",
+      "default": "./dist/b-style.min.css"
+    },
+    "./bulma": "./src/bulma/bulma.scss",
+    "./css": "./dist/b-style.css",
+    "./css/min": "./dist/b-style.min.css",
+    "./alpine": "./dist/alpine.js",
+    "./alpine/esm": "./dist/alpine.esm.js",
+    "./alpine/source": "./src/alpine-bundle.js",
+    "./components/*": "./src/components/*",
+    "./postcss": "./src/postcss.config.cjs",
+    "./postcss/base": "./src/postcss.config.base.cjs"
+  },
+  "scripts": {
+    "build:css": "sass --load-path=src/bulma src/bulma/bulma.scss dist/b-style.css && sass --load-path=src/bulma --style=compressed src/bulma/bulma.scss dist/b-style.min.css",
+    "build:js": "esbuild src/alpine-bundle.js --bundle --format=iife --global-name=BStyleAlpine --outfile=dist/alpine.js && esbuild src/alpine-bundle.js --bundle --format=esm --outfile=dist/alpine.esm.js",
+    "build": "npm run build:css && npm run build:js",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "sass": "^1.77.0"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.14.0",
+    "@alpinejs/intersect": "^3.14.0",
+    "@imacrayon/alpine-ajax": "^0.12.0",
+    "alpinejs": "^3.14.0"
+  },
+  "peerDependencies": {
+    "sass": ">=1.69.0"
+  },
+  "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    }
+  }
+}
