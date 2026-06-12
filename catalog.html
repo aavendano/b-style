@@ -249,6 +249,7 @@
       <ul>
         <li><a href="#tipografia">Tipografía</a></li>
         <li><a href="#colores">Colores</a></li>
+        <li><a href="#elevaciones">Elevaciones</a></li>
         <li><a href="#iconografia">Iconografía</a></li>
       </ul>
       <div class="nav-group">Elementos</div>
@@ -511,6 +512,229 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         ELEVACIONES
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="elevaciones" class="catalog-section">
+      <h2 class="section-title">Elevaciones</h2>
+      <p class="section-subtitle">
+        Sistema MD3 de 6 niveles · <code>box-shadow</code> pura ·
+        Variables <code>--md-elevation-0…5</code> · Hover sube un nivel.
+      </p>
+
+      <!-- Escala visual de niveles ──────────────────────────────────── -->
+      <div class="sub-section">
+        <h3 class="sub-section-title">Escala de elevación</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:1.5rem; padding:1rem 0;">
+
+          <div class="elevation-0" style="background:var(--b-scheme-main); border:1px solid var(--b-border-weak); border-radius:12px; padding:1.25rem; text-align:center; cursor:default;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">0</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">0 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">Sin sombra</p>
+          </div>
+
+          <div class="elevation-1" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; text-align:center; cursor:pointer;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">1</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">1 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">Cards, campos</p>
+          </div>
+
+          <div class="elevation-2" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; text-align:center; cursor:pointer;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">2</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">2 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">Botones, chips</p>
+          </div>
+
+          <div class="elevation-3" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; text-align:center; cursor:pointer;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">3</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">4 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">FAB, dropdowns</p>
+          </div>
+
+          <div class="elevation-4" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; text-align:center; cursor:pointer;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">4</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">8 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">Drawers, sheets</p>
+          </div>
+
+          <div class="elevation-5" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; text-align:center; cursor:pointer;">
+            <p style="font-size:var(--b-size-2); font-weight:800; margin-bottom:.25rem;">5</p>
+            <p style="font-size:var(--b-size-7); font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--b-text-weak);">12 dp</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.5rem;">Dialogs, modales</p>
+          </div>
+
+        </div>
+        <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.25rem;">
+          Pasa el cursor sobre cada tarjeta para ver la transición de elevación al nivel superior.
+        </p>
+      </div>
+
+      <!-- Tokens CSS ────────────────────────────────────────────────── -->
+      <div class="sub-section">
+        <h3 class="sub-section-title">Variables CSS</h3>
+        <div class="b-table-container">
+          <table class="b-table b-is-narrow b-is-fullwidth">
+            <thead>
+              <tr>
+                <th>Clase</th>
+                <th>Token</th>
+                <th>dp equiv.</th>
+                <th>Uso típico MD3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.elevation-0</code></td>
+                <td><code>--md-elevation-0</code></td>
+                <td>0 dp</td>
+                <td>Superficies planas, fondos</td>
+              </tr>
+              <tr>
+                <td><code>.elevation-1</code></td>
+                <td><code>--md-elevation-1</code></td>
+                <td>1 dp</td>
+                <td>Cards, text fields, list items</td>
+              </tr>
+              <tr>
+                <td><code>.elevation-2</code></td>
+                <td><code>--md-elevation-2</code></td>
+                <td>2 dp</td>
+                <td>Contained buttons, cards hover</td>
+              </tr>
+              <tr>
+                <td><code>.elevation-3</code></td>
+                <td><code>--md-elevation-3</code></td>
+                <td>4 dp</td>
+                <td>FAB, dropdowns, chip on drag</td>
+              </tr>
+              <tr>
+                <td><code>.elevation-4</code></td>
+                <td><code>--md-elevation-4</code></td>
+                <td>8 dp</td>
+                <td>Navigation drawer, side sheets</td>
+              </tr>
+              <tr>
+                <td><code>.elevation-5</code></td>
+                <td><code>--md-elevation-5</code></td>
+                <td>12 dp</td>
+                <td>Dialogs, navigation bar, modals</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Uso con componentes Bulma ──────────────────────────────────── -->
+      <div class="sub-section">
+        <h3 class="sub-section-title">Uso con componentes Bulma</h3>
+        <div class="b-columns">
+
+          <!-- Card con elevation-1 (reposo) -->
+          <div class="b-column b-is-one-third">
+            <div class="b-card elevation-1" style="border-radius:12px; border:none;">
+              <div class="b-card-header" style="box-shadow:none; border-bottom:1px solid var(--b-border-weak);">
+                <p class="b-card-header-title" style="font-size:var(--b-size-6);">Card · elevation-1</p>
+              </div>
+              <div class="b-card-content" style="padding:1rem;">
+                <p style="font-size:var(--b-size-6);">Tarjeta en reposo. Sombra sutil de 1dp.</p>
+                <span class="b-tag b-is-primary b-is-light b-is-small" style="margin-top:.5rem;">1 dp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Box con elevation-3 (dropdown) -->
+          <div class="b-column b-is-one-third">
+            <div class="b-box elevation-3" style="border-radius:12px; padding:1.25rem;">
+              <p style="font-weight:600; margin-bottom:.5rem;">Box · elevation-3</p>
+              <p style="font-size:var(--b-size-6); color:var(--b-text-weak);">Dropdown, popover o panel flotante. 4dp de profundidad.</p>
+              <span class="b-tag b-is-info b-is-light b-is-small" style="margin-top:.5rem;">4 dp</span>
+            </div>
+          </div>
+
+          <!-- Modal simulado con elevation-5 -->
+          <div class="b-column b-is-one-third">
+            <div class="elevation-5" style="background:var(--b-scheme-main); border-radius:16px; padding:1.5rem;">
+              <p style="font-weight:700; font-size:var(--b-size-5); margin-bottom:.5rem;">Dialog · elevation-5</p>
+              <p style="font-size:var(--b-size-6); color:var(--b-text-weak); margin-bottom:1rem;">Sombra profunda de 12dp para diálogos modales.</p>
+              <div style="display:flex; gap:.5rem; justify-content:flex-end;">
+                <button class="b-button b-is-small b-is-ghost">Cancelar</button>
+                <button class="b-button b-is-small b-is-primary">Confirmar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dark mode demo ─────────────────────────────────────────────── -->
+      <div class="sub-section">
+        <h3 class="sub-section-title">Dark mode</h3>
+        <p style="font-size:var(--b-size-6); color:var(--b-text-weak); margin-bottom:1rem;">
+          En modo oscuro las sombras aumentan su opacidad (×1.7) para mantener
+          la separación de capas. Activa el toggle de tema arriba para verlo.
+          También responde a <code>@media (prefers-color-scheme: dark)</code>.
+        </p>
+        <div data-b-theme="dark" style="background:#1a1a2e; border-radius:12px; padding:2rem;">
+          <p style="color:#e0e0e0; font-size:var(--b-size-6); margin-bottom:1.5rem; font-weight:600;">
+            Vista forzada en tema oscuro
+          </p>
+          <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:flex-start;">
+            <div class="elevation-1" style="background:#262640; border-radius:10px; padding:1rem; width:110px; text-align:center; color:#e0e0e0; cursor:pointer;">
+              <span style="font-size:var(--b-size-3); font-weight:800;">1</span>
+              <p style="font-size:var(--b-size-7); opacity:.7; margin-top:.25rem;">1 dp</p>
+            </div>
+            <div class="elevation-2" style="background:#262640; border-radius:10px; padding:1rem; width:110px; text-align:center; color:#e0e0e0; cursor:pointer;">
+              <span style="font-size:var(--b-size-3); font-weight:800;">2</span>
+              <p style="font-size:var(--b-size-7); opacity:.7; margin-top:.25rem;">2 dp</p>
+            </div>
+            <div class="elevation-3" style="background:#262640; border-radius:10px; padding:1rem; width:110px; text-align:center; color:#e0e0e0; cursor:pointer;">
+              <span style="font-size:var(--b-size-3); font-weight:800;">3</span>
+              <p style="font-size:var(--b-size-7); opacity:.7; margin-top:.25rem;">4 dp</p>
+            </div>
+            <div class="elevation-4" style="background:#262640; border-radius:10px; padding:1rem; width:110px; text-align:center; color:#e0e0e0; cursor:pointer;">
+              <span style="font-size:var(--b-size-3); font-weight:800;">4</span>
+              <p style="font-size:var(--b-size-7); opacity:.7; margin-top:.25rem;">8 dp</p>
+            </div>
+            <div class="elevation-5" style="background:#262640; border-radius:10px; padding:1rem; width:110px; text-align:center; color:#e0e0e0; cursor:pointer;">
+              <span style="font-size:var(--b-size-3); font-weight:800;">5</span>
+              <p style="font-size:var(--b-size-7); opacity:.7; margin-top:.25rem;">12 dp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personalización ────────────────────────────────────────────── -->
+      <div class="sub-section">
+        <h3 class="sub-section-title">Personalización del color de sombra</h3>
+        <p style="font-size:var(--b-size-6); color:var(--b-text-weak); margin-bottom:1rem;">
+          Sobreescribe <code>--md-shadow-rgb</code> para colorear las sombras (ej. sombra con tinte de marca).
+        </p>
+        <div style="display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start;">
+          <!-- Sombra predeterminada -->
+          <div class="elevation-3" style="background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; width:160px; text-align:center;">
+            <p style="font-weight:600; font-size:var(--b-size-6);">Default</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.25rem;"><code>0 0 0</code></p>
+          </div>
+          <!-- Sombra con tinte violeta (primary) -->
+          <div class="elevation-3" style="--md-shadow-rgb:68 0 102; background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; width:160px; text-align:center;">
+            <p style="font-weight:600; font-size:var(--b-size-6);">Violet tint</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.25rem;"><code>68 0 102</code></p>
+          </div>
+          <!-- Sombra con tinte teal (info) -->
+          <div class="elevation-3" style="--md-shadow-rgb:0 70 80; background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; width:160px; text-align:center;">
+            <p style="font-weight:600; font-size:var(--b-size-6);">Teal tint</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.25rem;"><code>0 70 80</code></p>
+          </div>
+          <!-- Sombra con tinte rojo (danger) -->
+          <div class="elevation-3" style="--md-shadow-rgb:180 0 40; background:var(--b-scheme-main); border-radius:12px; padding:1.25rem; width:160px; text-align:center;">
+            <p style="font-weight:600; font-size:var(--b-size-6);">Danger tint</p>
+            <p style="font-size:var(--b-size-7); color:var(--b-text-weak); margin-top:.25rem;"><code>180 0 40</code></p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ══════════════════════════════════════════════════════════════
