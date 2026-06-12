@@ -1,5 +1,7 @@
 // CUSTOM VARIABLES (AA)
 
+@use "functions" as fn;
+
 $family-sans-serif-primary: "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
 $family-sans-serif-secondary: "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
 $light-background: hsl(0, 0%, 96%) !default;
@@ -51,13 +53,44 @@ $family-sans-serif: "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
 $family-monospace: "Inconsolata", "Hack", "SF Mono", "Roboto Mono", "Source Code Pro", "Ubuntu Mono", monospace !default;
 $render-mode: optimizeLegibility !default;
 
-$size-1: 3rem !default;
-$size-2: 2.5rem !default;
-$size-3: 2rem !default;
-$size-4: 1.5rem !default;
-$size-5: 1.25rem !default;
-$size-6: 1rem !default;
-$size-7: 0.75rem !default;
+// ─── Fluid Typography Scale ───────────────────────────────────────────────────
+// All sizes are generated from $font-size-body via a modular scale of $fluid-ratio
+// (Major Third = 1.25) and expressed as CSS clamp() values that scale linearly
+// between $fluid-min-viewport and $fluid-max-viewport.
+//
+// Override any of these four variables to remap the entire scale at once:
+//   $font-size-body     — anchor point (size-6, step 0)
+//   $fluid-ratio        — modular scale ratio
+//   $fluid-min-viewport — viewport width (px) where minimum sizes apply
+//   $fluid-max-viewport — viewport width (px) where maximum sizes apply
+//
+// Individual $size-* variables still carry !default, so they can be overridden
+// directly via @use "initial-variables" with ($size-1: <value>) if needed.
+
+$font-size-body:     1rem  !default; // Step 0 – body text anchor
+$fluid-ratio:        1.25  !default; // Major Third
+$fluid-min-viewport: 375   !default; // px – mobile portrait
+$fluid-max-viewport: 1440  !default; // px – wide desktop
+$fluid-root-px:      16    !default; // px – assumed root font-size
+
+// Fluid size scale (min viewport → max viewport):
+//   size-1  ms(4)→ms(5)  ~2.44rem → ~3.05rem
+//   size-2  ms(3)→ms(4)  ~1.95rem → ~2.44rem
+//   size-3  ms(2)→ms(3)  ~1.56rem → ~1.95rem
+//   size-4  ms(1)→ms(2)  ~1.25rem → ~1.56rem
+//   size-5  ms(0)→ms(1)  ~1.00rem → ~1.25rem
+//   size-6  ms(-1)→ms(0) ~0.80rem → ~1.00rem
+//   size-7  ms(-2)→ms(-1)~0.64rem → ~0.80rem
+// stylelint-disable declaration-colon-space-after
+$size-1: fn.fluid-clamp(fn.ms(4, $font-size-body, $fluid-ratio), fn.ms(5, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-2: fn.fluid-clamp(fn.ms(3, $font-size-body, $fluid-ratio), fn.ms(4, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-3: fn.fluid-clamp(fn.ms(2, $font-size-body, $fluid-ratio), fn.ms(3, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-4: fn.fluid-clamp(fn.ms(1, $font-size-body, $fluid-ratio), fn.ms(2, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-5: fn.fluid-clamp(fn.ms(0, $font-size-body, $fluid-ratio), fn.ms(1, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-6: fn.fluid-clamp(fn.ms(-1, $font-size-body, $fluid-ratio), fn.ms(0, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+$size-7: fn.fluid-clamp(fn.ms(-2, $font-size-body, $fluid-ratio), fn.ms(-1, $font-size-body, $fluid-ratio), $fluid-min-viewport, $fluid-max-viewport, $fluid-root-px) !default;
+// stylelint-enable declaration-colon-space-after
+// ─────────────────────────────────────────────────────────────────────────────
 
 $weight-light: 300 !default;
 $weight-normal: 400 !default;
