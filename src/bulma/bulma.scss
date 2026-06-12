@@ -19,6 +19,10 @@ $fluid-min-viewport: 375;
 $fluid-max-viewport: 1920;
 $fluid-root-px: 16;
 $fluid-ratio: 1.375;
+$radius-small: 0.09375rem;
+$radius: 0.1406rem;
+$radius-medium: 0.2109rem;
+$radius-large: 0.3164rem; 
 
 
 
@@ -45,6 +49,10 @@ $fluid-ratio: 1.375;
     $fluid-max-viewport: $fluid-max-viewport,
     $fluid-root-px: $fluid-root-px,
     $fluid-ratio: $fluid-ratio,
+    $radius-small: $radius-small,
+    $radius: $radius,
+    $radius-medium: $radius-medium,
+    $radius-large: $radius-large,
 );
 
 
