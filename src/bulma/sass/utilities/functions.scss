@@ -262,6 +262,34 @@
   @return true;
 }
 
+// ─── Fluid Typography ────────────────────────────────────────────────────────
+
+// Modular scale: returns the size at $step in a geometric scale.
+// Step 0 = $base; positive steps are larger, negative steps are smaller.
+@function ms($step, $base: 1rem, $ratio: 1.25) {
+  @return $base * powerNumber($ratio, $step);
+}
+
+// Fluid clamp: generates a CSS clamp() that scales linearly from $min-size at
+// $min-vp px to $max-size at $max-vp px, anchored in rem units.
+// $root-px must match the document root font size (default 16).
+@function fluid-clamp($min-size, $max-size, $min-vp: 375, $max-vp: 1440, $root-px: 16) {
+  $min-rem: math.div($min-size, 1rem);
+  $max-rem: math.div($max-size, 1rem);
+  $min-vp-rem: math.div($min-vp, $root-px);
+  $max-vp-rem: math.div($max-vp, $root-px);
+  $slope: math.div($max-rem - $min-rem, $max-vp-rem - $min-vp-rem);
+  $intercept: $min-rem - $slope * $min-vp-rem;
+  // Round to 4 decimal places for compact, readable output
+  $slope-vw: math.div(math.round($slope * 100 * 10000), 10000);
+  $intercept-r: math.div(math.round($intercept * 10000), 10000);
+  $min-r: math.div(math.round($min-rem * 10000), 10000);
+  $max-r: math.div(math.round($max-rem * 10000), 10000);
+  @return #{"clamp(#{$min-r}rem, #{$slope-vw}vw + #{$intercept-r}rem, #{$max-r}rem)"};
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 // By Cory Simmons https://corysimmons.com/
 @function bulmaStringToNumber($value) {
   @if meta.type-of($value) == "number" {
