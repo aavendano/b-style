@@ -13,6 +13,10 @@ $plt-gray-dark: hsl(108, 6%, 34%);
 $plt-family-primary: '"Roboto Condensed", "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
 $plt-family-secondary: '"Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
 $plt-image-dimensions: 75 100 150 320 400 460 520;
+$fluid-min-viewport: 375;  
+$fluid-max-viewport: 1920;
+$fluid-root-px: 16;
+$fluid-ratio: 1.375;
 
 // Override global Sass variables from the /utilities folder
 @use "sass/utilities/initial-variables" with ($primary: $plt-purple,
@@ -26,7 +30,11 @@ $plt-image-dimensions: 75 100 150 320 400 460 520;
     $background: $plt-gray-light,
     $grey-light: $plt-gray-light,
     $grey: $plt-gray,
-    $grey-dark: $plt-gray-dark );
+    $grey-dark: $plt-gray-dark,
+    $fluid-min-viewport: $fluid-min-viewport,
+    $fluid-max-viewport: $fluid-max-viewport,
+    $fluid-root-px: $fluid-root-px,
+    $fluid-ratio: $fluid-ratio,);
 
 @forward "sass/utilities/functions";
 @forward "sass/utilities/derived-variables";
