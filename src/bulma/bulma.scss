@@ -2,31 +2,50 @@
 
 // Import the Google Font
 
-
-// Set your brand colors
 $plt-purple: hsl(268, 41%, 33%);
 $plt-pink: hsl(346, 89%, 61%);
 $plt-teal: hsl(190, 84%, 29%);
 $plt-gray-light: hsl(0, 0%, 96%);
-$plt-gray: hsl(0, 0%, 71%);
+$plt-gray: hsl(0, 0%, 93%);
 $plt-gray-dark: hsl(108, 6%, 34%);
-$plt-family-primary: '"Roboto Condensed", "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
-$plt-family-secondary: '"Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
+$plt-family-primary: '"Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
+$plt-family-secondary: '"Roboto Condensed", "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif';
 $plt-image-dimensions: 75 100 150 320 400 460 520;
+$plt-tablet: 768px;
+$plt-desktop: 1152px;
+$plt-widescreen: 1536px;
+$plt-fullhd: 1920px;
+$fluid-min-viewport: 375;  
+$fluid-max-viewport: 1920;
+$fluid-root-px: 16;
+$fluid-ratio: 1.375;
+
+
 
 // Override global Sass variables from the /utilities folder
-@use "sass/utilities/initial-variables" with ($primary: $plt-purple,
+@use "sass/utilities/initial-variables" with (
+    $primary: $plt-purple,
     $info: $plt-teal,
     $light: $plt-gray-light,
     $dark: $plt-gray-dark,
     $link: $plt-pink,
-    $family-sans-serif-primary: $plt-family-primary,
-    $family-sans-serif-secondary: $plt-family-secondary,
-    $dimensions: $plt-image-dimensions,
     $background: $plt-gray-light,
     $grey-light: $plt-gray-light,
     $grey: $plt-gray,
-    $grey-dark: $plt-gray-dark );
+    $grey-dark: $plt-gray-dark,
+    $family-sans-serif-primary: $plt-family-primary,
+    $family-sans-serif-secondary: $plt-family-secondary,
+    $dimensions: $plt-image-dimensions,
+    $section-padding: 3rem .25rem,
+    $tablet: $plt-tablet,
+    $desktop: $plt-desktop,
+    $widescreen: $plt-widescreen,
+    $fullhd: $plt-fullhd,
+    $fluid-min-viewport: $fluid-min-viewport,  
+    $fluid-max-viewport: $fluid-max-viewport,
+    $fluid-root-px: $fluid-root-px,
+    $fluid-ratio: $fluid-ratio,
+);
 
 @forward "sass/utilities/functions";
 @forward "sass/utilities/derived-variables";
@@ -42,4 +61,4 @@ $plt-image-dimensions: 75 100 150 320 400 460 520;
 
 @forward "sass/themes";
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
