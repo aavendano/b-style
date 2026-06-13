@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-b-theme="light" class="b-has-navbar-fixed-top-touch">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>b-style - AI Style Guide</title>
+  <link rel="stylesheet" href="dist/b-style.css" />
+  <style>
+    .llm-context pre {
+      overflow-x: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="b-navbar b-is-primary b-is-fixed-top-touch" role="navigation" aria-label="AI guide navigation">
+  <div class="b-navbar-brand">
+    <a class="b-navbar-item" href="index.html"><strong>b-style</strong></a>
+  </div>
+  <div class="b-navbar-menu">
+    <div class="b-navbar-start">
+      <a class="b-navbar-item" href="index.html">Component catalog</a>
+      <a class="b-navbar-item" href="llm-short.html">Editorial (short)</a>
+    </div>
+    <div class="b-navbar-end">
+      <div class="b-navbar-item">
+        <button class="b-button b-is-light b-is-small" type="button" id="copy-all-btn">Copy all</button>
+      </div>
+      <div class="b-navbar-item">
+        <a class="b-button b-is-outlined b-is-small" href="LLM.md" target="_blank" rel="noopener">Raw LLM.md</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="b-hero b-is-primary b-is-small">
+  <div class="b-hero-body">
+    <div class="b-container">
+      <p class="b-title b-is-3">b-style AI Style Guide</p>
+      <p class="b-subtitle b-is-5">Instructions for AI agents: use only <code>b-*</code> classes from this framework.</p>
+    </div>
+  </div>
+</section>
+
+<section class="b-section">
+  <div class="b-container">
+    <div class="b-content b-mb-4">
+      <p>Copy the full guide below into your agent context. Source of truth: <a href="LLM.md">LLM.md</a> (keep in sync with this page).</p>
+    </div>
+    <div class="b-box llm-context">
+      <div class="b-level b-is-mobile b-mb-4">
+        <div class="b-level-left">
+          <p class="b-heading">Full context</p>
+        </div>
+        <div class="b-level-right">
+          <button class="b-button b-is-primary b-is-small" type="button" id="copy-all-btn-body">Copy all</button>
+        </div>
+      </div>
+      <pre id="llm-context"><code># b-style AI Style Guide
+
+Use this document when generating HTML/UI for projects styled with **b-style**.
+
+## Purpose
+
+b-style is a Bulma 1.x-based design system with a custom `b-` class prefix, fluid typography (Major Third scale), and brand tokens. Your output must use **only** classes defined in b-style.
+
+Visual demos and copyable snippets: open `index.html` in this repository.
+
+---
+
+## Hard rules
+
+1. Use **ONLY** classes prefixed with `b-` from b-style.
+2. Do **NOT** add `&lt;style&gt;` blocks, inline `style=""`, or third-party utility frameworks (Tailwind, Bootstrap, unprefixed Bulma).
+3. Do **NOT** use unprefixed Bulma classes (`button`, `is-primary`, `navbar`) — always `b-button`, `b-is-primary`, `b-navbar`.
+4. Do **NOT** invent class names. If unsure, prefer layout primitives (`b-box`, `b-section`, `b-columns`) and semantic color helpers.
+5. Do **NOT** rely on Alpine.js unless interactivity is explicitly required; static markup should work with CSS alone.
+6. Prefer semantic HTML inside b-style components (`&lt;button&gt;`, `&lt;a&gt;`, `&lt;nav&gt;`, `&lt;section&gt;`, labels tied to inputs).
+
+---
+
+## Setup
+
+```html
+&lt;link rel="stylesheet" href="node_modules/b-style/dist/b-style.min.css"&gt;
+```
+
+```scss
+@use "b-style/bulma" as *;
+```
+
+```html
+&lt;html lang="en" data-b-theme="light"&gt;
+```
+
+Toggle theme: `document.documentElement.setAttribute('data-b-theme', 'dark')`.
+
+Optional Alpine bundle: `dist/alpine.js` (includes collapse, intersect, ajax, carousel plugins).
+
+---
+
+## Naming conventions
+
+| Pattern | Example | Use |
+|---------|---------|-----|
+| Component | `b-button`, `b-card`, `b-navbar` | Base component |
+| Modifier | `b-is-primary`, `b-is-small`, `b-is-active` | Variants and states |
+| Helper | `b-has-text-centered`, `b-has-background-info` | Utilities |
+| Layout | `b-columns`, `b-column`, `b-container` | Grid and page structure |
+
+All Bulma modifiers use the `b-is-` or `b-has-` prefix.
+
+---
+
+## Design tokens
+
+### Colors (semantic)
+
+`primary`, `link`, `info`, `success`, `warning`, `danger`, `dark`, `light`
+
+Apply on components: `b-is-primary`, `b-is-success`, etc.
+
+Text helpers: `b-has-text-primary`, `b-has-text-success`, …
+
+Background helpers: `b-has-background-primary`, `b-has-text-primary-invert`, …
+
+### Breakpoints
+
+| Name | Min width | Typical use |
+|------|-----------|-------------|
+| tablet | 768px | Tablet layouts |
+| desktop | 1152px | Sidebar, full navbar |
+| touch | below 1152px | Mobile/tablet |
+| widescreen | 1536px | Wide layouts |
+| fullhd | 1920px | Full HD |
+
+Responsive visibility: `b-is-hidden-mobile`, `b-is-hidden-tablet`, `b-is-hidden-touch`, `b-is-hidden-desktop`, `b-is-hidden-widescreen`.
+
+Responsive display: `b-is-flex-desktop`, `b-is-block-mobile`, etc.
+
+### Typography
+
+- Semantic content block: `.b-content` wraps headings and paragraphs.
+- Titles: `.b-title` with sizes `.b-is-1` … `.b-is-6`.
+- Subtitles: `.b-subtitle` with optional `.b-is-5`, etc.
+- Weights: `b-has-text-weight-light`, `b-has-text-weight-normal`, `b-has-text-weight-medium`, `b-has-text-weight-semibold`, `b-has-text-weight-bold`, `b-has-text-weight-extrabold`.
+- Transform: `b-is-capitalized`, `b-is-uppercase`, `b-is-lowercase`, `b-is-italic`, `b-is-underlined`.
+
+---
+
+## Layout patterns
+
+```html
+&lt;section class="b-section"&gt;
+  &lt;div class="b-container"&gt;
+    &lt;div class="b-columns b-is-multiline"&gt;
+      &lt;div class="b-column b-is-half"&gt;...&lt;/div&gt;
+      &lt;div class="b-column"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+```html
+&lt;section class="b-hero b-is-primary b-is-small"&gt;
+  &lt;div class="b-hero-body"&gt;
+    &lt;p class="b-title"&gt;Page title&lt;/p&gt;
+    &lt;p class="b-subtitle"&gt;Supporting text&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+Column sizes: `b-is-half`, `b-is-one-third`, `b-is-one-quarter`, `b-is-three-quarters`, etc.
+
+Spacing helpers: `b-m-*`, `b-p-*`, `b-mt-4`, `b-mb-5`, `b-px-4`, `b-pb-4` (0–6 scale).
+
+---
+
+## Component reference
+
+### Buttons
+
+```html
+&lt;div class="b-buttons"&gt;
+  &lt;button class="b-button b-is-primary"&gt;Primary&lt;/button&gt;
+  &lt;button class="b-button b-is-primary b-is-outlined"&gt;Outlined&lt;/button&gt;
+  &lt;button class="b-button b-is-primary b-is-light"&gt;Light&lt;/button&gt;
+  &lt;button class="b-button b-is-primary b-is-rounded"&gt;Rounded&lt;/button&gt;
+  &lt;button class="b-button b-is-info b-is-loading"&gt;Loading&lt;/button&gt;
+  &lt;button class="b-button" disabled&gt;Disabled&lt;/button&gt;
+  &lt;button class="b-button b-is-text"&gt;Text&lt;/button&gt;
+  &lt;button class="b-button b-is-ghost"&gt;Ghost&lt;/button&gt;
+&lt;/div&gt;
+```
+
+Sizes: `b-is-small`, default, `b-is-medium`, `b-is-large`.
+
+Colors: `b-is-primary`, `b-is-link`, `b-is-info`, `b-is-success`, `b-is-warning`, `b-is-danger`, `b-is-dark`, `b-is-light`.
+
+### Tags
+
+```html
+&lt;span class="b-tag b-is-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="b-tag b-is-primary b-is-small"&gt;Small&lt;/span&gt;
+
+&lt;div class="b-tags b-has-addons"&gt;
+  &lt;span class="b-tag b-is-dark"&gt;Version&lt;/span&gt;
+  &lt;span class="b-tag b-is-success"&gt;1.0.0&lt;/span&gt;
+&lt;/div&gt;
+```
+
+### Notifications
+
+```html
+&lt;div class="b-notification b-is-success"&gt;
+  &lt;button class="b-delete"&gt;&lt;/button&gt;
+  &lt;strong&gt;Success&lt;/strong&gt; - Operation completed.
+&lt;/div&gt;
+```
+
+Colors: `b-is-primary`, `b-is-success`, `b-is-warning`, `b-is-danger`, `b-is-info`.
+
+### Messages
+
+```html
+&lt;div class="b-message b-is-info"&gt;
+  &lt;div class="b-message-header"&gt;
+    &lt;p&gt;Information&lt;/p&gt;
+    &lt;button class="b-delete" aria-label="delete"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="b-message-body"&gt;Message content here.&lt;/div&gt;
+&lt;/div&gt;
+```
+
+### Progress
+
+```html
+&lt;progress class="b-progress b-is-primary" value="70" max="100"&gt;70%&lt;/progress&gt;
+&lt;progress class="b-progress b-is-primary b-is-small" value="70" max="100"&gt;Small&lt;/progress&gt;
+```
+
+### Box
+
+```html
+&lt;div class="b-box"&gt;
+  &lt;p class="b-title b-is-4"&gt;Box title&lt;/p&gt;
+  &lt;p&gt;Content inside a box.&lt;/p&gt;
+  &lt;div class="b-buttons"&gt;
+    &lt;button class="b-button b-is-primary"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+```
+
+### Cards
+
+```html
+&lt;div class="b-card"&gt;
+  &lt;div class="b-card-header"&gt;
+    &lt;p class="b-card-header-title"&gt;Card title&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="b-card-content"&gt;
+    &lt;div class="b-content"&gt;&lt;p&gt;Card body.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;footer class="b-card-footer"&gt;
+    &lt;a href="#" class="b-card-footer-item"&gt;Edit&lt;/a&gt;
+    &lt;a href="#" class="b-card-footer-item b-has-text-danger"&gt;Delete&lt;/a&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+```
+
+### Tables
+
+```html
+&lt;div class="b-table-container"&gt;
+  &lt;table class="b-table b-is-striped b-is-hoverable b-is-fullwidth"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Item&lt;/td&gt;
+        &lt;td&gt;&lt;span class="b-tag b-is-success b-is-light"&gt;Active&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+```
+
+### Forms
+
+```html
+&lt;div class="b-field"&gt;
+  &lt;label class="b-label"&gt;Email&lt;/label&gt;
+  &lt;div class="b-control"&gt;
+    &lt;input class="b-input" type="email" placeholder="you@example.com" /&gt;
+  &lt;/div&gt;
+  &lt;p class="b-help b-is-success"&gt;Email verified.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="b-field"&gt;
+  &lt;label class="b-label"&gt;Category&lt;/label&gt;
+  &lt;div class="b-control"&gt;
+    &lt;div class="b-select b-is-fullwidth"&gt;
+      &lt;select&gt;&lt;option&gt;Choose...&lt;/option&gt;&lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="b-field"&gt;
+  &lt;div class="b-control"&gt;
+    &lt;label class="b-checkbox"&gt;
+      &lt;input type="checkbox" checked /&gt;
+      Accept terms
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="b-field b-is-grouped"&gt;
+  &lt;div class="b-control"&gt;
+    &lt;button class="b-button b-is-primary"&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+```
+
+Input states: `b-is-success`, `b-is-danger` on `.b-input`, `.b-textarea`, `.b-select`.
+
+### Tabs
+
+```html
+&lt;div class="b-tabs"&gt;
+  &lt;ul&gt;
+    &lt;li class="b-is-active"&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class="b-tabs b-is-boxed"&gt;...&lt;/div&gt;
+&lt;div class="b-tabs b-is-toggle b-is-toggle-rounded"&gt;...&lt;/div&gt;
+```
+
+### Breadcrumb
+
+```html
+&lt;nav class="b-breadcrumb" aria-label="breadcrumbs"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="b-is-active"&gt;&lt;a aria-current="page"&gt;Current&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+```
+
+Separators: `b-has-arrow-separator`, `b-has-bullet-separator`.
+
+### Panel
+
+```html
+&lt;div class="b-panel b-is-primary"&gt;
+  &lt;p class="b-panel-heading"&gt;Section&lt;/p&gt;
+  &lt;a class="b-panel-block b-is-active"&gt;Active item&lt;/a&gt;
+  &lt;a class="b-panel-block"&gt;Item&lt;/a&gt;
+&lt;/div&gt;
+```
+
+### Navbar
+
+```html
+&lt;nav class="b-navbar b-is-primary b-is-fixed-top-touch" role="navigation"&gt;
+  &lt;div class="b-navbar-brand"&gt;
+    &lt;a class="b-navbar-item" href="#"&gt;&lt;strong&gt;Brand&lt;/strong&gt;&lt;/a&gt;
+    &lt;a role="button" class="b-navbar-burger" aria-label="menu" aria-expanded="false"&gt;
+      &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="b-navbar-menu"&gt;
+    &lt;div class="b-navbar-start"&gt;
+      &lt;a class="b-navbar-item b-is-active"&gt;Home&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="b-navbar-end"&gt;
+      &lt;div class="b-navbar-item"&gt;
+        &lt;a class="b-button b-is-primary"&gt;Sign up&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+```
+
+Mobile menu: toggle `.b-is-active` on `.b-navbar-burger` and `.b-navbar-menu`.
+
+Fixed navbar offset: add `b-has-navbar-fixed-top-touch` on `&lt;html&gt;`.
+
+Dropdown: `b-navbar-item b-has-dropdown b-is-hoverable` with `.b-navbar-dropdown`.
+
+### Drawer (custom)
+
+```html
+&lt;div class="b-drawer b-is-active"&gt;
+  &lt;div class="b-drawer-background"&gt;&lt;/div&gt;
+  &lt;div class="b-drawer-panel"&gt;
+    &lt;nav class="b-menu"&gt;...&lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+```
+
+Toggle `.b-is-active` on `.b-drawer`. Optional scroll lock: `b-is-clipped` on `&lt;html&gt;`.
+
+### Menu (sidebar)
+
+```html
+&lt;aside class="b-menu"&gt;
+  &lt;p class="b-menu-label"&gt;Section&lt;/p&gt;
+  &lt;ul class="b-menu-list"&gt;
+    &lt;li&gt;&lt;a class="b-is-active" href="#"&gt;Active&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;
+```
+
+### Level
+
+```html
+&lt;div class="b-level b-is-mobile"&gt;
+  &lt;div class="b-level-left"&gt;&lt;p class="b-heading"&gt;Label&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="b-level-right"&gt;&lt;p class="b-title"&gt;Value&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+```
+
+### Footer
+
+```html
+&lt;footer class="b-footer"&gt;
+  &lt;div class="b-content b-has-text-centered"&gt;
+    &lt;p&gt;Footer text&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+```
+
+---
+
+## Common task → class mapping
+
+| Task | Classes |
+|------|---------|
+| Primary CTA | `b-button b-is-primary` |
+| Secondary action | `b-button b-is-outlined` or `b-is-light` |
+| Status badge | `b-tag b-is-success b-is-light` |
+| Page wrapper | `b-section` &gt; `b-container` |
+| Two-column layout | `b-columns b-is-multiline` + `b-column b-is-half` |
+| Card grid | `b-columns b-is-multiline` + `b-column` + `b-card` |
+| Alert banner | `b-notification b-is-warning` or `b-message b-is-danger` |
+| Form error | `b-input b-is-danger` + `b-help b-is-danger` |
+| Center text | `b-has-text-centered` |
+| Hide on mobile | `b-is-hidden-touch` or `b-is-hidden-mobile` |
+| Sticky sidebar | `b-is-position-sticky` (desktop) |
+
+---
+
+## Anti-patterns (do NOT do this)
+
+```html
+&lt;!-- WRONG: unprefixed Bulma --&gt;
+&lt;button class="button is-primary"&gt;Save&lt;/button&gt;
+
+&lt;!-- WRONG: inline styles --&gt;
+&lt;div style="padding: 16px; color: purple"&gt;Content&lt;/div&gt;
+
+&lt;!-- WRONG: Tailwind / custom utilities --&gt;
+&lt;div class="flex gap-4 p-6 rounded-lg"&gt;Content&lt;/div&gt;
+
+&lt;!-- WRONG: invented classes --&gt;
+&lt;div class="b-card-elevated b-shadow-lg"&gt;Content&lt;/div&gt;
+
+&lt;!-- WRONG: custom CSS class on top of b-style --&gt;
+&lt;div class="my-custom-card b-box"&gt;Content&lt;/div&gt;
+```
+
+```html
+&lt;!-- CORRECT --&gt;
+&lt;div class="b-box b-mb-5"&gt;
+  &lt;p class="b-title b-is-4"&gt;Title&lt;/p&gt;
+  &lt;button class="b-button b-is-primary"&gt;Save&lt;/button&gt;
+&lt;/div&gt;
+```
+
+---
+
+## Custom b-style modules (in dist/b-style.css)
+
+Available beyond standard Bulma:
+
+- **Drawer**: `.b-drawer`, `.b-drawer-background`, `.b-drawer-panel`
+- **Overlays**: `.b-has-image-overlay`, `.b-badge-{color}`, `.b-overlay-gradient-bottom`
+- **Carousel**: `.b-carousel-wrapper`, `.b-carousel`, `.b-carousel-item`
+- **Card horizontal**: `.b-card-horizontal`, `.b-header-vertical`
+
+Use only when the UI pattern requires them. See `index.html` catalog for visual reference.
+
+---
+
+## Agent checklist
+
+Before returning HTML:
+
+- [ ] Every class starts with `b-` (or is standard HTML without styling role)
+- [ ] No inline styles or `&lt;style&gt;` tags
+- [ ] Colors use semantic tokens (`b-is-primary`, not hex values)
+- [ ] Layout uses `b-section`, `b-container`, `b-columns` where appropriate
+- [ ] Forms use `b-field` &gt; `b-label` + `b-control` structure
+- [ ] Interactive navbar includes burger + menu toggle pattern on touch
+- [ ] Theme attribute set on `&lt;html data-b-theme="light"&gt;` when relevant
+
+---
+
+## References
+
+- Interactive catalog: `index.html`
+- Copyable snippets: each section in `index.html` under **Copy** buttons
+- Package install: `npm install github:aavendano/b-style`
+- SCSS entry: `@use "b-style/bulma" as *;`
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<footer class="b-footer">
+  <div class="b-content b-has-text-centered">
+    <p><a href="index.html">Back to component catalog</a></p>
+  </div>
+</footer>
+
+<script>
+  function copyLlmContext(button) {
+    const target = document.getElementById('llm-context');
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(function () {
+      const original = button.textContent;
+      button.textContent = 'Copied';
+      button.classList.add('b-is-success');
+      setTimeout(function () {
+        button.textContent = original;
+        button.classList.remove('b-is-success');
+      }, 1500);
+    });
+  }
+
+  document.getElementById('copy-all-btn').addEventListener('click', function () {
+    copyLlmContext(this);
+  });
+
+  document.getElementById('copy-all-btn-body').addEventListener('click', function () {
+    copyLlmContext(this);
+  });
+</script>
+</body>
+</html>

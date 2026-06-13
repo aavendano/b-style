@@ -12,6 +12,8 @@
   "license": "MIT",
   "files": [
     "dist",
+    "LLM.md",
+    "LLM.short.md",
     "src/bulma",
     "src/components",
     "src/bulma/scripts",

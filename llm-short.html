@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-b-theme="light" class="b-has-navbar-fixed-top-touch">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>b-style - AI Style Guide (Editorial)</title>
+  <link rel="stylesheet" href="dist/b-style.css" />
+  <style>
+    .llm-context pre {
+      overflow-x: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+<!-- source: LLM.short.md -->
+
+<nav class="b-navbar b-is-primary b-is-fixed-top-touch" role="navigation" aria-label="AI editorial guide navigation">
+  <div class="b-navbar-brand">
+    <a class="b-navbar-item" href="index.html"><strong>b-style</strong></a>
+  </div>
+  <div class="b-navbar-menu">
+    <div class="b-navbar-start">
+      <a class="b-navbar-item" href="index.html">Catalog</a>
+      <a class="b-navbar-item" href="llm.html">Full guide</a>
+    </div>
+    <div class="b-navbar-end">
+      <div class="b-navbar-item">
+        <button class="b-button b-is-light b-is-small" type="button" id="copy-all-btn">Copy all</button>
+      </div>
+      <div class="b-navbar-item">
+        <a class="b-button b-is-outlined b-is-small" href="LLM.short.md" target="_blank" rel="noopener">Raw LLM.short.md</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="b-hero b-is-primary b-is-small">
+  <div class="b-hero-body">
+    <div class="b-container">
+      <p class="b-title b-is-3">b-style AI Style Guide (Editorial)</p>
+      <p class="b-subtitle b-is-5">Compact guide for editorial content sections. Max context efficiency.</p>
+    </div>
+  </div>
+</section>
+
+<section class="b-section">
+  <div class="b-container">
+    <div class="b-content b-mb-4">
+      <p>Copy into agent context for articles, landing blocks, and CMS sections. Source: <a href="LLM.short.md">LLM.short.md</a> (3178 chars). Full reference: <a href="llm.html">llm.html</a>.</p>
+    </div>
+    <div class="b-box llm-context">
+      <div class="b-level b-is-mobile b-mb-4">
+        <div class="b-level-left">
+          <p class="b-heading">Editorial context</p>
+        </div>
+        <div class="b-level-right">
+          <button class="b-button b-is-primary b-is-small" type="button" id="copy-all-btn-body">Copy all</button>
+        </div>
+      </div>
+      <pre id="llm-context"><code># b-style Editorial Guide (short)
+
+For AI agents building editorial content: articles, landing sections, CMS blocks. Use **only** `b-*` classes. No inline styles, no Tailwind, no unprefixed Bulma.
+
+Full guide: `LLM.md` | Demos: `index.html`
+
+## Editorial shell
+
+```html
+&lt;section class="b-section"&gt;
+  &lt;div class="b-container"&gt;
+    &lt;div class="b-content"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+```
+
+## Typography &amp; b-content
+
+Wrap prose in `.b-content`. Use semantic `h1–h4`, `p`, `small`, `ul/ol`, `blockquote`, `a`.
+
+```html
+&lt;div class="b-content"&gt;
+  &lt;h2&gt;Section heading&lt;/h2&gt;
+  &lt;p&gt;Body paragraph with &lt;strong&gt;emphasis&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+```
+
+## Title and Subtitle
+
+Outside `.b-content` for hero/section headers: `.b-title` + `.b-subtitle`. Sizes: `.b-is-1` … `.b-is-6`.
+
+```html
+&lt;p class="b-title b-is-3"&gt;Article title&lt;/p&gt;
+&lt;p class="b-subtitle b-is-5"&gt;Deck or summary line&lt;/p&gt;
+```
+
+## Colors
+
+Semantic tokens: `primary`, `link`, `info`, `success`, `warning`, `danger`, `dark`, `light`.
+
+```html
+&lt;span class="b-tag b-is-info"&gt;Label&lt;/span&gt;
+&lt;p class="b-has-text-success"&gt;Positive text&lt;/p&gt;
+&lt;div class="b-box b-has-background-primary b-has-text-primary-invert"&gt;Highlight&lt;/div&gt;
+```
+
+## Buttons
+
+```html
+&lt;div class="b-buttons"&gt;
+  &lt;a class="b-button b-is-primary" href="#"&gt;Read more&lt;/a&gt;
+  &lt;a class="b-button b-is-outlined" href="#"&gt;Share&lt;/a&gt;
+&lt;/div&gt;
+```
+
+## Notifications
+
+```html
+&lt;div class="b-notification b-is-info"&gt;
+  &lt;button class="b-delete"&gt;&lt;/button&gt;
+  &lt;strong&gt;Note&lt;/strong&gt; — Editorial callout text.
+&lt;/div&gt;
+```
+
+## Messages
+
+```html
+&lt;div class="b-message b-is-warning"&gt;
+  &lt;div class="b-message-header"&gt;&lt;p&gt;Editor's note&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="b-message-body"&gt;Clarification or disclaimer.&lt;/div&gt;
+&lt;/div&gt;
+```
+
+## Box
+
+Grouped block or sidebar callout:
+
+```html
+&lt;div class="b-box"&gt;
+  &lt;p class="b-title b-is-5"&gt;Related&lt;/p&gt;
+  &lt;p&gt;Supporting content.&lt;/p&gt;
+&lt;/div&gt;
+```
+
+## Tables
+
+Always wrap in `.b-table-container` for horizontal scroll on mobile.
+
+```html
+&lt;div class="b-table-container"&gt;
+  &lt;table class="b-table b-is-striped b-is-fullwidth"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Col&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+```
+
+## Images
+
+```html
+&lt;figure class="b-image b-is-16by9 b-is-fullwidth"&gt;
+  &lt;img src="photo.jpg" alt="Description" /&gt;
+&lt;/figure&gt;
+```
+
+Ratios: `b-is-square`, `b-is-4by3`, `b-is-16by9`. Optional: `b-is-rounded` on `img`.
+
+## Tabs
+
+```html
+&lt;div class="b-tabs b-is-boxed"&gt;
+  &lt;ul&gt;
+    &lt;li class="b-is-active"&gt;&lt;a&gt;Tab A&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a&gt;Tab B&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+```
+
+## Columns
+
+Multi-column editorial layouts:
+
+```html
+&lt;div class="b-columns b-is-multiline"&gt;
+  &lt;div class="b-column b-is-two-thirds"&gt;&lt;div class="b-content"&gt;Main&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="b-column"&gt;&lt;div class="b-box"&gt;Aside&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+```
+
+## Helpers
+
+- Text: `b-has-text-centered`, `b-has-text-weight-bold`, `b-is-italic`
+- Spacing: `b-mb-4`, `b-mb-5`, `b-mt-4`, `b-p-4`
+- Visibility: `b-is-hidden-touch`, `b-is-hidden-mobile`
+
+## Anti-patterns
+
+```html
+&lt;!-- WRONG --&gt;
+&lt;div style="color:red" class="flex"&gt;...&lt;/div&gt;
+&lt;button class="button is-primary"&gt;Go&lt;/button&gt;
+
+&lt;!-- CORRECT --&gt;
+&lt;div class="b-box b-has-text-danger"&gt;...&lt;/div&gt;
+&lt;a class="b-button b-is-primary" href="#"&gt;Go&lt;/a&gt;
+```
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<footer class="b-footer">
+  <div class="b-content b-has-text-centered">
+    <p><a href="index.html">Component catalog</a> · <a href="llm.html">Full AI guide</a></p>
+  </div>
+</footer>
+
+<script>
+  function copyLlmContext(button) {
+    const target = document.getElementById('llm-context');
+    if (!target) return;
+    navigator.clipboard.writeText(target.textContent).then(function () {
+      const original = button.textContent;
+      button.textContent = 'Copied';
+      button.classList.add('b-is-success');
+      setTimeout(function () {
+        button.textContent = original;
+        button.classList.remove('b-is-success');
+      }, 1500);
+    });
+  }
+
+  document.getElementById('copy-all-btn').addEventListener('click', function () {
+    copyLlmContext(this);
+  });
+
+  document.getElementById('copy-all-btn-body').addEventListener('click', function () {
+    copyLlmContext(this);
+  });
+</script>
+</body>
+</html>

@@ -125,6 +125,32 @@ Artefactos generados en `dist/`:
 - `alpine.js` (IIFE)
 - `alpine.esm.js` (ESM)
 
+## Documentación
+
+El catálogo interactivo en [`index.html`](index.html) es la referencia principal de componentes. Tras compilar (`npm run build`), ábrelo con un servidor estático local.
+
+Cada sección incluye una demo visual y un snippet HTML copiable con el botón **Copy**.
+
+| Categoría | Ancla |
+|-----------|-------|
+| Instalación y setup | `#getting-started` |
+| Tipografía y colores | `#typography`, `#colors` |
+| Elementos | `#buttons`, `#tags`, `#notifications`, `#messages`, `#progress`, `#box`, `#titles` |
+| Componentes | `#cards`, `#tables`, `#forms`, `#tabs`, `#breadcrumb`, `#panel`, `#navbar` |
+| Layout | `#columns`, `#section-hero` |
+| Helpers | `#helpers` |
+
+El README cubre instalación y consumo del paquete; el catálogo documenta el markup y las clases `b-*` de cada componente.
+
+### Guía para agentes AI
+
+- [`LLM.md`](LLM.md) — instrucciones densas para modelos LLM (solo clases `b-*`, reglas, ejemplos, anti-patterns). Incluido en el paquete npm.
+- [`LLM.short.md`](LLM.short.md) — guía compacta (≤4000 caracteres) para **contenido editorial**: artículos, secciones CMS, landing blocks.
+- [`llm.html`](llm.html) — guía completa con botón **Copy all**; enlazada desde el navbar del catálogo como **AI guide**.
+- [`llm-short.html`](llm-short.html) — versión editorial short con **Copy all**.
+
+Al generar UI con un agente, incluye `LLM.md` o `LLM.short.md` en el contexto del proyecto según el tipo de contenido.
+
 ## Licencia
 
 MIT
